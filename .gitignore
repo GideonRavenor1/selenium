@@ -1,0 +1,6 @@
+venv
+.idea
+data/source-page.html
+data/result.json
+data/urls.json
+driver/chromedriver
