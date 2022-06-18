@@ -52,6 +52,7 @@ class SeleniumParser(ICommand):
         self._service = Service(executable_path=path_to_driver)
         self.driver = webdriver.Chrome(service=self._service)
         self.path_to_html_file = path_to_html_file
+        self.driver.implicitly_wait(2)
 
     def execute(self) -> None:
         self._get_source_html()
@@ -78,7 +79,6 @@ class SeleniumParser(ICommand):
                         file.write(self.driver.page_source)
                     print('[INFO] HTML file copied successfully!')
                     break
-                self.driver.implicitly_wait(2)
         except WebDriverException as ex:
             print('[ERROR] ' + str(ex))
         finally:
